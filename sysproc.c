@@ -8,6 +8,13 @@
 #include "proc.h"
 
 int
+sys_hw(void)
+{
+  cprintf("hello world\n");
+  return 1;
+}
+
+int
 sys_fork(void)
 {
   return fork();
