@@ -7,6 +7,22 @@
 #include "mmu.h"
 #include "proc.h"
 
+static int fCount = 0;
+
+int
+sys_fkc(void)
+{
+  int n;
+  if (argint(0, &n) < 0)
+    return -1;
+
+  if (n == 0) {
+    fCount = 0;
+    return 0;
+  }
+  return fCount;
+}
+
 int
 sys_hw(void)
 {
@@ -17,6 +33,7 @@ sys_hw(void)
 int
 sys_fork(void)
 {
+  fCount += 1;
   return fork();
 }
 
